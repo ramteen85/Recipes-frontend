@@ -22,17 +22,18 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.initForm();
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params.id;
         this.editMode = this.id != null;
+        this.initForm();
       }
     );
 
     this.subscription = this.recipeService.recipesChanged.subscribe(
       () => {
         this.editMode = this.id != null;
+        console.log('edit mode: ', this.editMode);
         this.initForm();
       }
     );
@@ -74,8 +75,11 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     let recipeDescription = '';
     const recipeIngredients = new FormArray([]);
 
+    console.log('edit mode: ', this.editMode);
+
     if (this.editMode) {
       const recipe = this.recipeService.getRecipe(this.id);
+      console.log('recipe: ', recipe);
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
