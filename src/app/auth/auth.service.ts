@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Subject } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({ providedIn: 'root' })
@@ -18,7 +19,7 @@ export class AuthService {
   }
 
   signUp(email: string, password: string, nickname: string) {
-    return axios.post('http://localhost:8080/auth/register', {
+    return axios.post(`${environment.serverUrl}/auth/register`, {
         email,
         password,
         nickname
@@ -26,7 +27,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return axios.post('http://localhost:8080/auth/login', {
+    return axios.post(`${environment.serverUrl}/auth/login`, {
         email,
         password
     });
