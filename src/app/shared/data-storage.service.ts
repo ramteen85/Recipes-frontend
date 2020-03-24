@@ -22,6 +22,8 @@ export class DataStorageService {
 
   fetchRecipes() {
 
+    console.log(localStorage.getItem('token'));
+
     axios.get(`${environment.serverUrl}/recipes/get`, {
       headers: {
         token: this.authService.getToken()

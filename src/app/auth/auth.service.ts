@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { RecipeService } from '../recipes/recipe.service';
 
 
 @Injectable({ providedIn: 'root' })
@@ -12,7 +13,7 @@ export class AuthService {
   user = new Subject<User>();
   private tokenExpirationTimer: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private recipeService: RecipeService) {}
 
   getToken() {
     return localStorage.getItem('token');
@@ -53,6 +54,7 @@ export class AuthService {
   logout() {
     this.user.next(null);
     clearInterval(this.tokenExpirationTimer);
+    this.recipeService.clearRecipes();
     localStorage.removeItem('id');
     localStorage.removeItem('email');
     localStorage.removeItem('nickname');

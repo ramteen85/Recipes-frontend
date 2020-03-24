@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import { LoggingService } from './logging.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
     CoreModule,
     SharedModule
   ],
