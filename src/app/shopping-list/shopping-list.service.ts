@@ -17,7 +17,12 @@ export class ShoppingListService {
   }
 
   addIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
+    const index = this.ingredients.indexOf(ingredient);
+    if (index) {
+      this.ingredients[index] = ingredient;
+    } else {
+      this.ingredients.push(ingredient);
+    }
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
