@@ -2,5 +2,5 @@
 
 export const environment = {
   production: true,
-  serverUrl: ''
+  serverUrl: 'https://recipes-backend-ram.herokuapp.com'
 };
