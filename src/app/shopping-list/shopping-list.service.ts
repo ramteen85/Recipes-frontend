@@ -27,10 +27,9 @@ export class ShoppingListService {
   }
 
   addIngredients(ingredients: Ingredient[]) {
-    // for (const ingredient of ingredients) {
-    //   this.addIngredient(ingredient);
-    // }
-    this.ingredients.push(...ingredients);
+    for (const ingredient of ingredients) {
+      this.addIngredient(ingredient);
+    }
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
