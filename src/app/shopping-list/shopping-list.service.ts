@@ -19,7 +19,7 @@ export class ShoppingListService {
   addIngredient(ingredient: Ingredient) {
     const index = this.ingredients.indexOf(ingredient);
     if (index) {
-      this.ingredients[index] = ingredient;
+      this.ingredients[index].amount++;
     } else {
       this.ingredients.push(ingredient);
     }
