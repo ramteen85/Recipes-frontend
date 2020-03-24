@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import { LoggingService } from './logging.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -21,6 +22,6 @@ import { LoggingService } from './logging.service';
     SharedModule
   ],
   bootstrap: [AppComponent],
-  providers: [LoggingService]
+  providers: [LoggingService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppModule { }
